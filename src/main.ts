@@ -16,11 +16,13 @@ const squareSize = canvasSize / gameSize;
 
 const generateAliveCell = () => Math.floor(Math.random() * 10) < 2;
 
-let gameState: boolean[][] = new Array(gameSize)
-  .fill(false)
-  .map((_) => Array.from({ length: gameSize }, () => generateAliveCell()));
+function createNewGame() {
+  return new Array(gameSize)
+    .fill(false)
+    .map((_) => Array.from({ length: gameSize }, () => generateAliveCell()));
+}
 
-console.log(gameState);
+let gameState: boolean[][] = createNewGame();
 
 function draw(gameState: boolean[][]) {
   for (let row = 0; row < gameState.length; ++row) {
